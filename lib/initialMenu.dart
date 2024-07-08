@@ -406,6 +406,7 @@ class _ChooseYourInstance extends State<initialMenu> {
   bool virgin = true;
   List<String> filteredList = [];
   late String medName;
+  late String medds;
 
   @override
   void initState() {
