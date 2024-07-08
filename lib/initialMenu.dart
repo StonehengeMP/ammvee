@@ -537,7 +537,7 @@ class _ChooseYourInstance extends State<initialMenu> {
                                               padding:
                                                   const EdgeInsets.symmetric(
                                                       horizontal: 30),
-                                              color: Colors.black,
+                                              color: Colors.white,
                                               child: Container(
                                                 width: double.infinity,
                                                 padding:
