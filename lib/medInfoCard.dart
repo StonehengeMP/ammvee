@@ -5,8 +5,14 @@ import 'package:flutter/material.dart';
 
 class medInfoCard extends StatefulWidget {
   final String medName;
+  final String medDose;
+  final String medIndication;
 
-  const medInfoCard({super.key, required this.medName});
+  const medInfoCard({super.key,
+    required this.medName,
+    required this.medDose,
+    required this.medIndication
+  });
 
   @override
   State<medInfoCard> createState() => _medInfoCardState();
@@ -119,7 +125,7 @@ class _medInfoCardState extends State<medInfoCard> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           textAlign: TextAlign.justify,
-                          medDVF,
+                          widget.medDose,
                           style: const TextStyle(
                             fontSize: 15,
                           ),
@@ -153,48 +159,16 @@ class _medInfoCardState extends State<medInfoCard> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           textAlign: TextAlign.justify,
-                          medDVF,
+                          widget.medIndication,
                           style: const TextStyle(
                             fontSize: 15,
                           ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.06,
-                        top: MediaQuery.of(context).size.height * 0.01,
-                      ),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Tiempo de Retiro :",
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: kBlue,
-                              fontWeight: FontWeight.bold
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.06,
-                        top: MediaQuery.of(context).size.height * 0.01,
-                        right: MediaQuery.of(context).size.width * 0.06,
-                        bottom: MediaQuery.of(context).size.height * 0.03,
-                      ),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          textAlign: TextAlign.justify,
-                          medDVF,
-                          style: const TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.07,
+                        )
                   ])))),
         );
 }
