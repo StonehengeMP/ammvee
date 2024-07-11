@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "45807704772",
+    "project_id": "ammvee-smp",
+    "storage_bucket": "ammvee-smp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45807704772:android:664f0fccec9bf04b0a0791",
+        "android_client_info": {
+          "package_name": "com.smp.ammvee_release"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0iZ-0wppQrBkjqVRpEkA97ZbranilOe8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

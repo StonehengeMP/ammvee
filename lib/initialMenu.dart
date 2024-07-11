@@ -968,7 +968,6 @@ class _ChooseYourInstance extends State<initialMenu> {
   bool virgin = true;
   List<String> filteredList = [];
   late String medName;
-  late String medds;
 
   @override
   void initState() {
@@ -1041,14 +1040,11 @@ class _ChooseYourInstance extends State<initialMenu> {
                               return s.toLowerCase().contains(
                                   textEditingValue.text.toLowerCase());
                             });
-                            print("Matches from search: $matches");
-                            print("Text ${textEditingValue.text}");
                             filteredList.addAll(matches);
                             return matches;
                           }
                         },
                         onSelected: (String selection) {
-                          print("Sospechoso numero 1 $selection");
                           medName = selection;
                           setState(() {
                             filteredList.clear();
@@ -1077,7 +1073,6 @@ class _ChooseYourInstance extends State<initialMenu> {
                               onChanged: (String value) {
                                 setState(() {
                                   medName = value;
-                                  print("Sospechoso numero 2 $value");
                                 });
                               },
                             ),

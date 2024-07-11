@@ -22,7 +22,7 @@ class _preLoginState extends State<preLogin> {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/backgroundmain.png"),
+                image: AssetImage("assets/backgroundadd.png"),
                 fit: BoxFit.fill
             ),
           ),
