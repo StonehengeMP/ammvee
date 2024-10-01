@@ -2,6 +2,7 @@ import 'package:ammvee_release/addOns/isLoading.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
 import 'package:ammvee_release/logIn.dart';
 import 'package:ammvee_release/medInfoCard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class initialMenu extends StatefulWidget {
@@ -985,6 +986,7 @@ class _ChooseYourInstance extends State<initialMenu> {
       : PopScope(
           canPop: false,
           child: Scaffold(
+            resizeToAvoidBottomInset: false,
             appBar: AppBar(
               backgroundColor: Colors.white,
               elevation: 1,
@@ -1183,7 +1185,8 @@ class _ChooseYourInstance extends State<initialMenu> {
     );
     Widget continueButton = TextButton(
       child: const Text("Cerrar Sesion"),
-      onPressed: () {
+      onPressed: () async {
+        await FirebaseAuth.instance.signOut();
         Navigator.push(
           context,
           MaterialPageRoute(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ammvee_release/addOns/text_field_container.dart';
 
-class RoundedInputField extends StatelessWidget {
+class RoundedInputField extends StatefulWidget {
   final String hintText;
   final IconData icon;
   final ValueChanged<String> onChanged;
@@ -13,15 +13,21 @@ class RoundedInputField extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<RoundedInputField> createState() => _RoundedInputFieldState();
+}
+
+class _RoundedInputFieldState extends State<RoundedInputField> {
+  @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextField(
+        onChanged: widget.onChanged,
         style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
-            hintText: hintText,
+            hintText: widget.hintText,
             hintStyle: const TextStyle(color: Colors.white),
             border: InputBorder.none,
-            icon: Icon(icon, color: Colors.white)),
+            icon: Icon(widget.icon, color: Colors.white)),
       ),
     );
   }

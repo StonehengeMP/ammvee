@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="ammvee_release"
+        android:label="AMMVEE"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/appiconmain">
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -8,6 +8,7 @@ class logIn extends StatelessWidget {
     return PopScope(
       canPop: true,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Body(),
       ),
     );

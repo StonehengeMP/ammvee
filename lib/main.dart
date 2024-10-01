@@ -6,6 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'logIn.dart';
 
 
 Future<void> main() async {
@@ -32,11 +33,11 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: kWhite
       ),
       home: AnimatedSplashScreen(
-        splash: 'assets/finalogo.png',
+        splash: 'assets/finallogotest.png',
         splashIconSize: double.maxFinite,
         duration: 3000,
         backgroundColor: Colors.white,
-        nextScreen: const preLogin(),
+        nextScreen: logIn(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
       ),
