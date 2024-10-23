@@ -4,7 +4,9 @@ import 'package:ammvee_release/addOns/Rounded_Password_Field.dart';
 import 'package:ammvee_release/addOns/isLoading.dart';
 import 'package:ammvee_release/addOns/rounded_input_field.dart';
 import 'package:ammvee_release/logIn.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ammvee_release/addOns/themeColors.dart';
 
 class singUpBody extends StatefulWidget {
   const singUpBody({Key? key}) : super(key: key);
@@ -62,22 +64,48 @@ class _singUpBodyState extends State<singUpBody> {
                       });
                     }
                 ),
-                RoundedButton(text: "Registrarse", press:() {
-                  if(firstPassword != secondPassword){
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text("Contraseñas no coinciden."),
-                      backgroundColor: Colors.red,
-                    ));
-                  }else if(correo == ""){
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text("Favor de ingresar un correo."),
-                  backgroundColor: Colors.red,
-                    ));
-                  }else{
-                    //TODO: Agarrar lista de correos que se pueden dar de alta
-                    //TODO Dar de alta el usuario en DB
-                  }
-                }),
+                RoundedButton(
+                  color: kBlue,
+                  text: "Sign Up",
+                  press: () async {
+                    if (firstPassword == "" || secondPassword == "" || correo == "") {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("All fields must be filled!"),
+                      ));
+                    }else{
+                      if(secondPassword != firstPassword) {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Passwords do not match!"),
+                        ));
+                      }else{
+                        try {
+                          final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                            email: correo,
+                            password: firstPassword,
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text("Welcome"),
+                          ));
+                        } on FirebaseAuthException catch (e) {
+                          if (e.code == 'weak-password') {
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text("Passwords is too weak!"),
+                            ));
+                          } else if (e.code == 'email-already-in-use') {
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                              content: Text("Account already exist for this mail!"),
+                            ));
+                          }
+                        } catch (e) {
+                          print(e);
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text("Error, internet may be slow try again later!"),
+                          ));
+                        }
+                      }
+                    }
+                  },
+                ),
                     AlreadyHaveAnAccountCheck(
                         login: false,
                         press: () {

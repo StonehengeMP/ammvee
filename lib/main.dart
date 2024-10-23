@@ -1,3 +1,4 @@
+import 'package:ammvee_release/addOns/postLogin.dart';
 import 'package:ammvee_release/preLogInSignUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         splashIconSize: double.maxFinite,
         duration: 3000,
         backgroundColor: Colors.white,
-        nextScreen: logIn(),
+        nextScreen: const Postlogin(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
       ),

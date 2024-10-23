@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'package:ammvee_release/addOns/postLogin.dart';
 import 'package:ammvee_release/addOns/rounded_input_field.dart';
 import 'package:ammvee_release/initialMenu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../singUp.dart';
+import 'Already_Account.dart';
 import 'Rounded_Button.dart';
 import 'Rounded_Password_Field.dart';
 
@@ -101,18 +104,18 @@ class _BodyState extends State<Body> {
               SizedBox(
                 height: size.height * 0.03,
               ),
-              // AlreadyHaveAnAccountCheck(
-              //   press: () {
-              //     Navigator.push(
-              //      context,
-              //       MaterialPageRoute(
-              //        builder: (context) {
-              //           return const singUp();
-              //         },
-              //        ),
-              //      );
-              //   },
-              // )
+              AlreadyHaveAnAccountCheck(
+                press: () {
+                  Navigator.push(
+                   context,
+                    MaterialPageRoute(
+                     builder: (context) {
+                        return const singUp();
+                      },
+                     ),
+                   );
+                },
+              )
             ],
           ),
         ),
