@@ -57,8 +57,8 @@ class _medInfoCardState extends State<medInfoCard> {
                 ),
                 centerTitle: true,
                 title: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset('assets/logo.png',
                         height: MediaQuery.of(context).size.height * 0.03),
@@ -73,7 +73,51 @@ class _medInfoCardState extends State<medInfoCard> {
                         },
                         icon: const Icon(Icons.people_alt_sharp,
                             color: Colors.black)),
-                  )
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text("Nomenclatura"),
+                              content: const Text("VÍAS DE ADMINISTRACIÓN\n"
+                                  "\t\tIV: Intra Venoso\n"
+                                  "\t\tIM: Intra Muscular\n"
+                                  "\t\tSC: Subcutáneo\n"
+                                  "\t\tIA: Intra Articular\n"
+                                  "\t\tIC: Intra Cardiaca\n"
+                                  "UNIDADES DE MEDIDA\n"
+                                  "\t\tUI: Unidades Internacionales\n"
+                                  "\t\tmg: Miligramos\n"
+                                  "\t\tL: Litros\n"
+                                  "\t\tmL: Mililitros\n"
+                                  "\t\tµg: Microgramos\n"
+                                  "\t\tgr: Gramos\n"
+                                  "\t\tkg: Kilogramos\n"
+                                  "\t\tcm: Centímetros\n"
+                                  "\t\tmEq: Miliequivalentes\n"
+                                  "UNIDADES DE TIEMPO\n"
+                                  "\t\thr: Hora\n"
+                                  "\t\tmin: Minutos\n"
+                                  "OTROS:\n"
+                                  "\t\tSSF: Solución salina fisiológica\n"
+                                  "\t\tSNG: Sonda Nasogástrica"),
+                              actions: <Widget>[
+                                TextButton(
+                                    child: Text("Cerrar"),
+                                    style: TextButton.styleFrom(
+                                      foregroundColor: Colors.red,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    }),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      icon: const Icon(Icons.info_outline, color: Colors.black))
                 ],
               ),
               backgroundColor: kWhite,
