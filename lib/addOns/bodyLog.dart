@@ -8,6 +8,7 @@ import '../singUp.dart';
 import 'Already_Account.dart';
 import 'Rounded_Button.dart';
 import 'Rounded_Password_Field.dart';
+import 'enterAsGuest.dart';
 
 var email = "";
 var pass = "";
@@ -32,7 +33,7 @@ class _BodyState extends State<Body> {
         print('User is currently signed out!');
       } else {
         print('User is signed in!');
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const initialMenu()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => initialMenu(pageContext: false)));
       }
     });
     super.initState();
@@ -78,7 +79,7 @@ class _BodyState extends State<Body> {
                         email: email,
                         password: pass
                     ).then((value) {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const initialMenu()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => initialMenu(pageContext: false)));
                     }).onError((error, stackTrace) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text("Contraseña o correo incorrecto!"),
@@ -103,6 +104,21 @@ class _BodyState extends State<Body> {
               ),
               SizedBox(
                 height: size.height * 0.03,
+              ),
+              enterAsGuest(
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return initialMenu(pageContext: true);
+                      },
+                    ),
+                  );
+                },
+              ),
+              SizedBox(
+                height: size.height * 0.01,
               ),
               AlreadyHaveAnAccountCheck(
                 press: () {

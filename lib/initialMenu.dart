@@ -6,7 +6,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class initialMenu extends StatefulWidget {
-  const initialMenu({Key? key}) : super(key: key);
+  initialMenu({Key? key, required this.pageContext}) : super(key: key);
+  bool pageContext;
 
   @override
   State<initialMenu> createState() => _ChooseYourInstance();
@@ -969,11 +970,20 @@ class _ChooseYourInstance extends State<initialMenu> {
   bool virgin = true;
   List<String> filteredList = [];
   late String medName;
+  late String exitMode;
 
   @override
   void initState() {
     super.initState();
-    //TODO: "GET" FROM DB INFORMATION OF MEDICINE NAMES
+    if (widget.pageContext == true) {
+      print("Hello im hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+      exitMode = "Regresar a Iniciar Sesión";
+      medsIndications.clear();
+      medsDose.clear();
+      medsArray.clear();
+    } else {
+      exitMode = "Cerrar Sesión";
+    }
     setState(() {
       filteredList.addAll(medsArray);
       loading = false;
@@ -990,14 +1000,6 @@ class _ChooseYourInstance extends State<initialMenu> {
             appBar: AppBar(
               backgroundColor: Colors.white,
               elevation: 1,
-              leading: IconButton(
-                icon: const Icon(Icons.power_settings_new_sharp),
-                color: Colors.black,
-                onPressed: () {
-                  showAlertDialog(context);
-                },
-
-              ),
               centerTitle: true,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1062,159 +1064,232 @@ class _ChooseYourInstance extends State<initialMenu> {
                     icon: const Icon(Icons.info_outline, color: Colors.black))
               ],
             ),
+            drawer: Drawer(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  const DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: kBlack,
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "AMMVEE App",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Acerca de Nosotros'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    title: Text('Contacto'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    title: Text('Guías prácticas'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    title: Text('Responsivas Médicas'),
+                    onTap: () {},
+                  ),
+                  ListTile(
+                    title: Text(exitMode),
+                    onTap: () {
+                      showAlertDialog(context);
+                    },
+                  ),
+                ],
+              ),
+            ),
             backgroundColor: kWhite,
             body: SafeArea(
-              child: Container(
-                height: MediaQuery.of(context).size.height,
-                width: double.infinity,
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      RawAutocomplete(
-                        optionsBuilder: (TextEditingValue textEditingValue) {
-                          if (textEditingValue.text == '') {
-                            filteredList.clear();
-                            filteredList.addAll(medsArray);
-                            return const Iterable<String>.empty();
-                          } else {
-                            List<String> matches = <String>[];
-                            filteredList.clear();
-                            virgin = false;
-                            matches.addAll(medsArray);
-                            matches.retainWhere((s) {
-                              return s.toLowerCase().contains(
-                                  textEditingValue.text.toLowerCase());
-                            });
-                            filteredList.addAll(matches);
-                            return matches;
-                          }
-                        },
-                        onSelected: (String selection) {
-                          medName = selection;
-                          setState(() {
-                            filteredList.clear();
-                            filteredList.add(medName);
-                          });
-                        },
-                        fieldViewBuilder: (BuildContext context,
-                            TextEditingController textEditingController,
-                            FocusNode focusNode,
-                            VoidCallback onFieldSubmitted) {
-                          return Container(
-                            margin: const EdgeInsets.all(20),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              border: Border.all(color: kBlack),
-                            ),
-                            child: TextField(
-                              decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  icon: Icon(Icons.search, color: kBlue),
-                                  hintText: "Buscar Medicamento"),
-                              controller: textEditingController,
-                              focusNode: focusNode,
-                              onChanged: (String value) {
+              child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  if (widget.pageContext == true) {
+                    return const Center(
+                      child: Text(
+                        "Crea una cuenta para ver más información",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black54),
+                      ),
+                    );
+                  } else {
+                    return Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            RawAutocomplete(
+                              optionsBuilder:
+                                  (TextEditingValue textEditingValue) {
+                                if (textEditingValue.text == '') {
+                                  filteredList.clear();
+                                  filteredList.addAll(medsArray);
+                                  return const Iterable<String>.empty();
+                                } else {
+                                  List<String> matches = <String>[];
+                                  filteredList.clear();
+                                  virgin = false;
+                                  matches.addAll(medsArray);
+                                  matches.retainWhere((s) {
+                                    return s.toLowerCase().contains(
+                                        textEditingValue.text.toLowerCase());
+                                  });
+                                  filteredList.addAll(matches);
+                                  return matches;
+                                }
+                              },
+                              onSelected: (String selection) {
+                                medName = selection;
                                 setState(() {
-                                  medName = value;
+                                  filteredList.clear();
+                                  filteredList.add(medName);
                                 });
                               },
+                              fieldViewBuilder: (BuildContext context,
+                                  TextEditingController textEditingController,
+                                  FocusNode focusNode,
+                                  VoidCallback onFieldSubmitted) {
+                                return Container(
+                                  margin: const EdgeInsets.all(20),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 25, vertical: 5),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(color: kBlack),
+                                  ),
+                                  child: TextField(
+                                    decoration: const InputDecoration(
+                                        border: InputBorder.none,
+                                        icon: Icon(Icons.search, color: kBlue),
+                                        hintText: "Buscar Medicamento"),
+                                    controller: textEditingController,
+                                    focusNode: focusNode,
+                                    onChanged: (String value) {
+                                      setState(() {
+                                        medName = value;
+                                      });
+                                    },
+                                  ),
+                                );
+                              },
+                              optionsViewBuilder: (BuildContext context,
+                                  void Function(String) onSelected,
+                                  Iterable<String> options) {
+                                return Material(
+                                    child: SizedBox(
+                                        height: 200,
+                                        child: SingleChildScrollView(
+                                            child: Column(
+                                          children: options.map((opt) {
+                                            return InkWell(
+                                                onTap: () {
+                                                  onSelected(opt);
+                                                },
+                                                child: Container(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 30),
+                                                    color: Colors.white,
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              10),
+                                                      child: Text(opt),
+                                                    )));
+                                          }).toList(),
+                                        ))));
+                              },
                             ),
-                          );
-                        },
-                        optionsViewBuilder: (BuildContext context,
-                            void Function(String) onSelected,
-                            Iterable<String> options) {
-                          return Material(
-                              child: SizedBox(
-                                  height: 200,
-                                  child: SingleChildScrollView(
-                                      child: Column(
-                                    children: options.map((opt) {
-                                      return InkWell(
-                                          onTap: () {
-                                            onSelected(opt);
-                                          },
-                                          child: Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 30),
-                                              color: Colors.white,
-                                              child: Container(
-                                                width: double.infinity,
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: Text(opt),
-                                              )));
-                                    }).toList(),
-                                  ))));
-                        },
-                      ),
-                      LayoutBuilder(builder: (context, constraints) {
-                        if (filteredList.isEmpty && !virgin) {
-                          return const Text("No se encontro ningun medicamento",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 20));
-                        } else {
-                          return SingleChildScrollView(
-                            child: GridView.count(
-                              physics: const BouncingScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              childAspectRatio: 10 / 2.5,
-                              crossAxisCount: 1,
-                              children:
-                                  List.generate(filteredList.length, (index) {
-                                return Card(
-                                  color: kWhite,
-                                  elevation: 5,
-                                  margin: const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 10),
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        ListTile(
-                                          leading: const ImageIcon(
-                                            AssetImage("assets/jeringa.png"),
-                                            color: Color(0xFF030303),
-                                          ),
-                                          title: Text(
-                                            filteredList[index],
-                                            style: const TextStyle(
-                                                fontSize: 15, color: kBlack),
-                                          ),
-                                          onTap: () {
-                                            var positionOfMedicine = medsArray.indexOf(filteredList[index]);
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) {
-                                                  return medInfoCard(
-                                                      medName: filteredList[index],
-                                                      medDose: medsDose[positionOfMedicine],
-                                                      medIndication: medsIndications[positionOfMedicine]
+                            LayoutBuilder(builder: (context, constraints) {
+                              if (filteredList.isEmpty && !virgin) {
+                                return const Text(
+                                    "No se encontro ningun medicamento",
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 20));
+                              } else {
+                                return SingleChildScrollView(
+                                  child: GridView.count(
+                                    physics: const BouncingScrollPhysics(),
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    childAspectRatio: 10 / 2.5,
+                                    crossAxisCount: 1,
+                                    children: List.generate(filteredList.length,
+                                        (index) {
+                                      return Card(
+                                        color: kWhite,
+                                        elevation: 5,
+                                        margin: const EdgeInsets.symmetric(
+                                            vertical: 10, horizontal: 10),
+                                        child: Center(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              ListTile(
+                                                leading: const ImageIcon(
+                                                  AssetImage(
+                                                      "assets/jeringa.png"),
+                                                  color: Color(0xFF030303),
+                                                ),
+                                                title: Text(
+                                                  filteredList[index],
+                                                  style: const TextStyle(
+                                                      fontSize: 15,
+                                                      color: kBlack),
+                                                ),
+                                                onTap: () {
+                                                  var positionOfMedicine =
+                                                      medsArray.indexOf(
+                                                          filteredList[index]);
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) {
+                                                        return medInfoCard(
+                                                            medName:
+                                                                filteredList[
+                                                                    index],
+                                                            medDose: medsDose[
+                                                                positionOfMedicine],
+                                                            medIndication:
+                                                                medsIndications[
+                                                                    positionOfMedicine]);
+                                                      },
+                                                    ),
                                                   );
                                                 },
                                               ),
-                                            );
-                                          },
+                                            ],
+                                          ),
                                         ),
-                                      ],
-                                    ),
+                                      );
+                                    }),
                                   ),
                                 );
-                              }),
-                            ),
-                          );
-                        }
-                      })
-                    ],
-                  ),
-                ),
+                              }
+                            })
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+                },
               ),
             ),
           ),
@@ -1222,43 +1297,54 @@ class _ChooseYourInstance extends State<initialMenu> {
 
   showAlertDialog(BuildContext context) {
     // set up the buttons
-    Widget cancelButton = TextButton(
-      child: const Text("Permancer"),
-      onPressed: () {
-        Navigator.of(context).pop(); // dismiss dialog
-      },
-    );
-    Widget continueButton = TextButton(
-      child: const Text("Cerrar Sesion"),
-      onPressed: () async {
-        await FirebaseAuth.instance.signOut();
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return logIn();
-            },
-          ),
-        );
-      },
-    );
+    if (widget.pageContext == true) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return logIn();
+          },
+        ),
+      );
+    } else {
+      Widget cancelButton = TextButton(
+        child: const Text("Permancer"),
+        onPressed: () {
+          Navigator.of(context).pop(); // dismiss dialog
+        },
+      );
+      Widget continueButton = TextButton(
+        child: const Text("Cerrar Sesion"),
+        onPressed: () async {
+          await FirebaseAuth.instance.signOut();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return logIn();
+              },
+            ),
+          );
+        },
+      );
 
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: const Text("AMMVEE"),
-      content: const Text("Quieres cerrar sesion?"),
-      actions: [
-        cancelButton,
-        continueButton,
-      ],
-    );
+      // set up the AlertDialog
+      AlertDialog alert = AlertDialog(
+        title: const Text("AMMVEE"),
+        content: const Text("Quieres cerrar sesion?"),
+        actions: [
+          cancelButton,
+          continueButton,
+        ],
+      );
 
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
   }
 }

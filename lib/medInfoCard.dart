@@ -49,7 +49,7 @@ class _medInfoCardState extends State<medInfoCard> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const initialMenu();
+                          return initialMenu(pageContext: false);
                         },
                       ),
                     );
