@@ -1,5 +1,7 @@
+import 'package:ammvee_release/acercaDeNosotros.dart';
 import 'package:ammvee_release/addOns/isLoading.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
+import 'package:ammvee_release/contacto.dart';
 import 'package:ammvee_release/logIn.dart';
 import 'package:ammvee_release/medInfoCard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -976,7 +978,6 @@ class _ChooseYourInstance extends State<initialMenu> {
   void initState() {
     super.initState();
     if (widget.pageContext == true) {
-      print("Hello im hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
       exitMode = "Regresar a Iniciar Sesión";
       medsIndications.clear();
       medsDose.clear();
@@ -1089,11 +1090,29 @@ class _ChooseYourInstance extends State<initialMenu> {
                   ),
                   ListTile(
                     title: Text('Acerca de Nosotros'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return acercaDeNosotros(pageContext: widget.pageContext);
+                          },
+                        ),
+                      );
+                    }
                   ),
                   ListTile(
                     title: Text('Contacto'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return Contacto(pageContext: widget.pageContext);
+                          },
+                        ),
+                      );
+                    },
                   ),
                   ListTile(
                     title: Text('Guías prácticas'),
