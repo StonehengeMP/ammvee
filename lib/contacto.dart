@@ -15,6 +15,7 @@ class Contacto extends StatefulWidget {
 }
 
 class _ContactoState extends State<Contacto> {
+
   var nombre = "";
   var apellido = "";
   var motivoDM = "";

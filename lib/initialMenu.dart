@@ -2,8 +2,10 @@ import 'package:ammvee_release/acercaDeNosotros.dart';
 import 'package:ammvee_release/addOns/isLoading.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
 import 'package:ammvee_release/contacto.dart';
+import 'package:ammvee_release/guiasPracticas.dart';
 import 'package:ammvee_release/logIn.dart';
 import 'package:ammvee_release/medInfoCard.dart';
+import 'package:ammvee_release/responsivasMedicas.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -1116,11 +1118,29 @@ class _ChooseYourInstance extends State<initialMenu> {
                   ),
                   ListTile(
                     title: Text('Guías prácticas'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return guiasPracticas(pageContext: widget.pageContext);
+                          },
+                        ),
+                      );
+                    },
                   ),
                   ListTile(
                     title: Text('Responsivas Médicas'),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return responsivasMedicas(pageContext: widget.pageContext);
+                          },
+                        ),
+                      );
+                    },
                   ),
                   ListTile(
                     title: Text(exitMode),
