@@ -1,8 +1,5 @@
-import 'package:ammvee_release/addOns/Rounded_Button.dart';
-import 'package:ammvee_release/addOns/rounded_input_field.dart';
-import 'package:ammvee_release/addOns/text_field_container.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
-import 'package:flutter/gestures.dart';
+import 'package:ammvee_release/mainScreenBM.dart';
 import 'package:flutter/material.dart';
 import 'initialMenu.dart';
 
@@ -37,7 +34,7 @@ class _ContactoState extends State<Contacto> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return initialMenu(pageContext: widget.pageContext);
+                    return mainScreenBM(pageContext: widget.pageContext);
                   },
                 ),
               );
@@ -68,11 +65,11 @@ class _ContactoState extends State<Contacto> {
                       top: MediaQuery.of(context).size.height * 0.01,
                       right: MediaQuery.of(context).size.width * 0.06,
                     ),
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.center,
                       child: Text(
                         "¡Gracias por descargar nuestra app de AMMVEE!",
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 25,
                           color: kBlue,
@@ -88,7 +85,7 @@ class _ContactoState extends State<Contacto> {
                     top: MediaQuery.of(context).size.height * 0.01,
                     right: MediaQuery.of(context).size.width * 0.06,
                   ),
-                  child: Align(
+                  child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                         "Valoramos tu interés en comunicarte con nosotros. Si tienes alguna pregunta, "
@@ -107,7 +104,7 @@ class _ContactoState extends State<Contacto> {
                      top: MediaQuery.of(context).size.height * 0.01,
                      right: MediaQuery.of(context).size.width * 0.06,
                    ),
-                   child: Align(
+                   child: const Align(
                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
@@ -127,7 +124,7 @@ class _ContactoState extends State<Contacto> {
                      top: MediaQuery.of(context).size.height * 0.01,
                      right: MediaQuery.of(context).size.width * 0.06,
                    ),
-                   child: Align(
+                   child: const Align(
                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
@@ -147,7 +144,7 @@ class _ContactoState extends State<Contacto> {
                     top: MediaQuery.of(context).size.height * 0.01,
                     right: MediaQuery.of(context).size.width * 0.06,
                   ),
-                  child: Align(
+                  child: const Align(
                       child: Text(
                           "Buscanos en Redes Sociales como:"
                       )
@@ -164,14 +161,17 @@ class _ContactoState extends State<Contacto> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.01,
                 ),
-                Text("𝕏   @ammveee"),
+                const Text("  𝕏     @ammveee"),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.13,
                 ),
                 Icon(Icons.notification_important),
-                Text(
-                    "Si quieres borrar tu cuenta, mandanos mensaje por correo a:\n"
-                    "formulario.ammvee.app@hotmail.com")
+                 Padding(
+                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+                  child: const Text(
+                      "Si quieres borrar tu cuenta, mandanos mensaje por correo a:"
+                      " formulario.ammvee.app@hotmail.com"),
+                )
               ],
             ),
           ),

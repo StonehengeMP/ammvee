@@ -1,6 +1,7 @@
 import 'package:ammvee_release/addOns/itemCards.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
 import 'package:ammvee_release/addOns/viewAPDF.dart';
+import 'package:ammvee_release/mainScreenBM.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'initialMenu.dart';
@@ -30,7 +31,7 @@ class _responsivasMedicasState extends State<responsivasMedicas> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return initialMenu(pageContext: widget.pageContext);
+                    return mainScreenBM(pageContext: widget.pageContext);
                   },
                 ),
               );

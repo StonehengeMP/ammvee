@@ -1,5 +1,6 @@
 import 'package:ammvee_release/addOns/isLoading.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
+import 'package:ammvee_release/mainScreenBM.dart';
 import 'initialMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
@@ -30,7 +31,7 @@ class _acercaDeNosotrosState extends State<acercaDeNosotros> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return initialMenu(pageContext: widget.pageContext);
+                      return mainScreenBM(pageContext: widget.pageContext);
                     },
                   ),
                 );

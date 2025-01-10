@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:ammvee_release/addOns/postLogin.dart';
 import 'package:ammvee_release/addOns/rounded_input_field.dart';
 import 'package:ammvee_release/initialMenu.dart';
+import 'package:ammvee_release/mainScreenBM.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../singUp.dart';
@@ -33,7 +34,7 @@ class _BodyState extends State<Body> {
         print('User is currently signed out!');
       } else {
         print('User is signed in!');
-        Navigator.push(context, MaterialPageRoute(builder: (context) => initialMenu(pageContext: false)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => mainScreenBM(pageContext: false)));
       }
     });
     super.initState();
@@ -79,7 +80,7 @@ class _BodyState extends State<Body> {
                         email: email,
                         password: pass
                     ).then((value) {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => initialMenu(pageContext: false)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => mainScreenBM(pageContext: false)));
                     }).onError((error, stackTrace) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text("Contraseña o correo incorrecto!"),
@@ -111,7 +112,7 @@ class _BodyState extends State<Body> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return initialMenu(pageContext: true);
+                        return mainScreenBM(pageContext: true);
                       },
                     ),
                   );

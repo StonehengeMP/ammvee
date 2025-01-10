@@ -4,6 +4,7 @@ import 'package:ammvee_release/addOns/themeColors.dart';
 import 'package:ammvee_release/contacto.dart';
 import 'package:ammvee_release/guiasPracticas.dart';
 import 'package:ammvee_release/logIn.dart';
+import 'package:ammvee_release/mainScreenBM.dart';
 import 'package:ammvee_release/medInfoCard.dart';
 import 'package:ammvee_release/responsivasMedicas.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -1003,6 +1004,20 @@ class _ChooseYourInstance extends State<initialMenu> {
             appBar: AppBar(
               backgroundColor: Colors.white,
               elevation: 1,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                color: Colors.black,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return mainScreenBM(pageContext: widget.pageContext);
+                      },
+                    ),
+                  );
+                },
+              ),
               centerTitle: true,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -1014,142 +1029,55 @@ class _ChooseYourInstance extends State<initialMenu> {
               ),
               actions: <Widget>[
                 Opacity(
-                  opacity: 0,
+                  opacity: widget.pageContext ? 0 : 1,
                   child: IconButton(
-                    onPressed: () {},
-                    icon:
-                        const Icon(Icons.people_alt_sharp, color: Colors.white),
-                  ),
-                ),
-                IconButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text("Nomenclatura"),
-                            content: const Text("VÍAS DE ADMINISTRACIÓN\n"
-                                "\t\tIV: Intra Venoso\n"
-                                "\t\tIM: Intra Muscular\n"
-                                "\t\tSC: Subcutáneo\n"
-                                "\t\tIA: Intra Articular\n"
-                                "\t\tIC: Intra Cardiaca\n"
-                                "UNIDADES DE MEDIDA\n"
-                                "\t\tUI: Unidades Internacionales\n"
-                                "\t\tmg: Miligramos\n"
-                                "\t\tL: Litros\n"
-                                "\t\tmL: Mililitros\n"
-                                "\t\tµg: Microgramos\n"
-                                "\t\tgr: Gramos\n"
-                                "\t\tkg: Kilogramos\n"
-                                "\t\tcm: Centímetros\n"
-                                "\t\tmEq: Miliequivalentes\n"
-                                "UNIDADES DE TIEMPO\n"
-                                "\t\thr: Hora\n"
-                                "\t\tmin: Minutos\n"
-                                "OTROS\n"
-                                "\t\tSSF: Solución salina fisiológica\n"
-                                "\t\tSNG: Sonda Nasogástrica"),
-                            actions: <Widget>[
-                              TextButton(
-                                  child: Text("Cerrar"),
-                                  style: TextButton.styleFrom(
-                                    foregroundColor: Colors.red,
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  }),
-                            ],
+                      onPressed: () {
+                        if (!widget.pageContext){
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text("Nomenclatura"),
+                                content: const Text("VÍAS DE ADMINISTRACIÓN\n"
+                                    "\t\tIV: Intra Venoso\n"
+                                    "\t\tIM: Intra Muscular\n"
+                                    "\t\tSC: Subcutáneo\n"
+                                    "\t\tIA: Intra Articular\n"
+                                    "\t\tIC: Intra Cardiaca\n"
+                                    "UNIDADES DE MEDIDA\n"
+                                    "\t\tUI: Unidades Internacionales\n"
+                                    "\t\tmg: Miligramos\n"
+                                    "\t\tL: Litros\n"
+                                    "\t\tmL: Mililitros\n"
+                                    "\t\tµg: Microgramos\n"
+                                    "\t\tgr: Gramos\n"
+                                    "\t\tkg: Kilogramos\n"
+                                    "\t\tcm: Centímetros\n"
+                                    "\t\tmEq: Miliequivalentes\n"
+                                    "UNIDADES DE TIEMPO\n"
+                                    "\t\thr: Hora\n"
+                                    "\t\tmin: Minutos\n"
+                                    "OTROS\n"
+                                    "\t\tSSF: Solución salina fisiológica\n"
+                                    "\t\tSNG: Sonda Nasogástrica"),
+                                actions: <Widget>[
+                                  TextButton(
+                                      child: Text("Cerrar"),
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.red,
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      }),
+                                ],
+                              );
+                            },
                           );
-                        },
-                      );
-                    },
-                    icon: const Icon(Icons.info_outline, color: Colors.black))
+                        }
+                      },
+                      icon: const Icon(Icons.info_outline, color: Colors.black)),
+                )
               ],
-            ),
-            drawer: Drawer(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  const DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: kBlack,
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "AMMVEE App",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    title: Text('Acerca de Nosotros'),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return acercaDeNosotros(pageContext: widget.pageContext);
-                          },
-                        ),
-                      );
-                    }
-                  ),
-                  ListTile(
-                    title: Text('Contacto'),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return Contacto(pageContext: widget.pageContext);
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text('Guías prácticas'),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return guiasPracticas(pageContext: widget.pageContext);
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text('Responsivas Médicas'),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return responsivasMedicas(pageContext: widget.pageContext);
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(exitMode),
-                    onTap: () {
-                      showAlertDialog(context);
-                    },
-                  ),
-                ],
-              ),
             ),
             backgroundColor: kWhite,
             body: SafeArea(
@@ -1334,56 +1262,4 @@ class _ChooseYourInstance extends State<initialMenu> {
           ),
         );
 
-  showAlertDialog(BuildContext context) {
-    // set up the buttons
-    if (widget.pageContext == true) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return logIn();
-          },
-        ),
-      );
-    } else {
-      Widget cancelButton = TextButton(
-        child: const Text("Permancer"),
-        onPressed: () {
-          Navigator.of(context).pop(); // dismiss dialog
-        },
-      );
-      Widget continueButton = TextButton(
-        child: const Text("Cerrar Sesion"),
-        onPressed: () async {
-          await FirebaseAuth.instance.signOut();
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return logIn();
-              },
-            ),
-          );
-        },
-      );
-
-      // set up the AlertDialog
-      AlertDialog alert = AlertDialog(
-        title: const Text("AMMVEE"),
-        content: const Text("Quieres cerrar sesion?"),
-        actions: [
-          cancelButton,
-          continueButton,
-        ],
-      );
-
-      // show the dialog
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return alert;
-        },
-      );
-    }
-  }
 }
