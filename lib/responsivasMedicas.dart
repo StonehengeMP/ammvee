@@ -63,40 +63,46 @@ class _responsivasMedicasState extends State<responsivasMedicas> {
                     ),
                   ),
                   ItemCard(
-                      title: "AUTORIZACIÓN PARA PROCEDIMIENTO QUIRÚRGICO",
+                      title: "Autorización para procedimiento quirúrgico",
                       extra: "Responsivas Médicas · Por AMMVEE AC\nseptiembre 26, 2024",
+                      pathImg: "bluelogo.png",
+                      circle: true,
                       press: (){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return viewAPDF(Name: "RESPONSIVA-CIRUGIA-2", pageContext: widget.pageContext, bool: false,);
+                              return viewAPDF(Name: "RESPONSIVA-CIRUGIA-2", pageContext: widget.pageContext);
                             },
                           ),
                         );
                       }),
                   ItemCard(
-                      title: "CONSENTIMIENTO INFORMADO DE EUTANASIA",
+                      title: "Consentimiento informado de eutanasia",
                       extra: "Responsivas Médicas · Por AMMVEE AC\nseptiembre 26, 2024",
+                      pathImg: "bluelogo.png",
+                      circle: true,
                       press: (){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return viewAPDF(Name: "AUTORIZACION-DE-EUTANASIA-2", pageContext: widget.pageContext, bool: false,);
+                              return viewAPDF(Name: "AUTORIZACION-DE-EUTANASIA-2", pageContext: widget.pageContext);
                             },
                           ),
                         );
                       }),
                   ItemCard(
-                      title: "AUTORIZACIÓN PARA PROCEDIMIENTOS DENTALES",
+                      title: "Autorización para procedimientos dentales",
                       extra: "Responsivas Médicas · Por AMMVEE AC\nseptiembre 26, 2024",
+                      pathImg: "bluelogo.png",
+                      circle: true,
                       press: (){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return viewAPDF(Name: "PROCEDIMIENTO-DENTAL-9.45.16", pageContext: widget.pageContext, bool: false,);
+                              return viewAPDF(Name: "PROCEDIMIENTO-DENTAL-9.45.16", pageContext: widget.pageContext);
                             },
                           ),
                         );

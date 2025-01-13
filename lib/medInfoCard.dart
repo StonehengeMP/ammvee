@@ -129,10 +129,14 @@ class _medInfoCardState extends State<medInfoCard> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.03,
                     ),
-                    Text(
-                      widget.medName,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                    Padding(
+                      padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * .1, right: MediaQuery.of(context).size.width * .1),
+                      child: Text(
+                        widget.medName,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.07,

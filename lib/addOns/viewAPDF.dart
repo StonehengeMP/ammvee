@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:ammvee_release/guiasPracticas.dart';
+import 'package:ammvee_release/mainScreenBM.dart';
 import 'package:ammvee_release/responsivasMedicas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,13 +9,12 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pdfx/pdfx.dart';
 
 class viewAPDF extends StatefulWidget {
-  final Name, pageContext, bool;
+  final Name, pageContext;
 
   const viewAPDF({
     Key? key,
     required this.Name,
     required this.pageContext,
-    required this.bool,
   }) : super(key: key);
 
   @override
@@ -43,8 +43,7 @@ class _viewAPDFState extends State<viewAPDF> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return widget.bool ? guiasPracticas(pageContext: widget.pageContext)
-                                       : responsivasMedicas(pageContext: widget.pageContext);
+                    return mainScreenBM(pageContext: widget.pageContext);
                   },
                 ),
               );

@@ -86,7 +86,7 @@ class _acercaDeNosotrosState extends State<acercaDeNosotros> {
                             "iniciales para cursar estudios de postgrado en el extranjero. Con ello, se"
                             " mantiene vivo el modelo de Calidad Profesional que se persigue en nuestro país"
                             " y que ha permitido que el MVZ mexicano con especialidad en equinos alcance un "
-                            "nivel de reconocimiento internacional."),
+                            "nivel de reconocimiento internacional.", textAlign: TextAlign.justify),
                       ),
                   ),
                   SizedBox(
@@ -107,7 +107,7 @@ class _acercaDeNosotrosState extends State<acercaDeNosotros> {
                               " las metas para las que fue creada. A mediano plazo, AMMVEE no "
                               "solo representará un mecanismo para organizar Congresos, sino"
                               " que irá más allá, para ofrecer beneficios tangibles a cada uno"
-                              " de sus Asociados."),
+                              " de sus Asociados.", textAlign: TextAlign.justify),
                     ),
                   ),
                 ],

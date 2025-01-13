@@ -1,7 +1,9 @@
 import 'package:ammvee_release/contacto.dart';
+import 'package:ammvee_release/formulaPeso.dart';
 import 'package:ammvee_release/guiasPracticas.dart';
 import 'package:ammvee_release/initialMenu.dart';
 import 'package:ammvee_release/logIn.dart';
+import 'package:ammvee_release/noticiasPage.dart';
 import 'package:ammvee_release/responsivasMedicas.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -143,6 +145,45 @@ class _mainScreenBMState extends State<mainScreenBM> {
                         MaterialPageRoute(
                           builder: (context) {
                             return initialMenu(pageContext: widget.pageContext);
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Formula de Peso'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return formulaPeso(pageContext: widget.pageContext);
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Noticias'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return noticiasPage(pageContext: widget.pageContext);
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Recursos visuales'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return noticiasPage(pageContext: widget.pageContext);
                           },
                         ),
                       );

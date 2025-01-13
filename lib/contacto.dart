@@ -12,7 +12,6 @@ class Contacto extends StatefulWidget {
 }
 
 class _ContactoState extends State<Contacto> {
-
   var nombre = "";
   var apellido = "";
   var motivoDM = "";
@@ -69,10 +68,11 @@ class _ContactoState extends State<Contacto> {
                       alignment: Alignment.center,
                       child: Text(
                         "¡Gracias por descargar nuestra app de AMMVEE!",
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 25,
-                          color: kBlue,
+                          fontWeight: FontWeight.bold,
+                          color: kdarkBlue,
                         ),
                       ),
                     )),
@@ -88,53 +88,13 @@ class _ContactoState extends State<Contacto> {
                   child: const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                        "Valoramos tu interés en comunicarte con nosotros. Si tienes alguna pregunta, "
-                        "sugerencia o necesitas más información sobre nuestros servicios o eventos,"
-                        " por favor contactanos por los siguientes medios",
+                      "Valoramos tu interés en comunicarte con nosotros. Si tienes alguna pregunta, "
+                      "sugerencia o necesitas más información sobre nuestros servicios o eventos,"
+                      " por favor contactanos por los siguientes medios",
                       textAlign: TextAlign.justify,
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                 Padding(
-                   padding:  EdgeInsets.only(
-                     left: MediaQuery.of(context).size.width * 0.001,
-                     top: MediaQuery.of(context).size.height * 0.01,
-                     right: MediaQuery.of(context).size.width * 0.06,
-                   ),
-                   child: const Align(
-                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.phone),
-                        Text("  Oficina: 01 (55) 5672 0907, 01 (55) 5243 3954")
-                      ],
-                                     ),
-                   ),
-                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                ),
-                 Padding(
-                   padding:  EdgeInsets.only(
-                     left: MediaQuery.of(context).size.width * 0.001,
-                     top: MediaQuery.of(context).size.height * 0.01,
-                     right: MediaQuery.of(context).size.width * 0.06,
-                   ),
-                   child: const Align(
-                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.email),
-                        Text("   formulario.ammvee.app@hotmail.com")
-                      ],
-                                     ),
-                   ),
-                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
@@ -145,33 +105,52 @@ class _ContactoState extends State<Contacto> {
                     right: MediaQuery.of(context).size.width * 0.06,
                   ),
                   child: const Align(
-                      child: Text(
-                          "Buscanos en Redes Sociales como:"
-                      )
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.phone),
+                        Text(
+                          "  Oficina: 01 (55) 5672 0907, 01 (55) 5243 3954",
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.01,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [Icon(Icons.facebook), Text("  @ammveee")],
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.001,
+                    top: MediaQuery.of(context).size.height * 0.01,
+                    right: MediaQuery.of(context).size.width * 0.06,
+                  ),
+                  child: const Align(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.email),
+                        Text(
+                          "   formulario.ammvee.app@hotmail.com",
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.01,
+                  height: MediaQuery.of(context).size.height * 0.06,
                 ),
-                const Text("  𝕏     @ammveee"),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.13,
-                ),
-                Icon(Icons.notification_important),
-                 Padding(
-                  padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
-                  child: const Text(
-                      "Si quieres borrar tu cuenta, mandanos mensaje por correo a:"
-                      " formulario.ammvee.app@hotmail.com"),
-                )
+                Icon(Icons.account_circle_sharp),
+                Padding(
+                    padding: EdgeInsets.all(
+                        MediaQuery.of(context).size.width * 0.05),
+                    child: const Text(
+                        "Si quieres borrar tu cuenta, Haz click aquí",
+                        textAlign: TextAlign.center))
               ],
             ),
           ),

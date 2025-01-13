@@ -65,12 +65,14 @@ class _guiasPracticasState extends State<guiasPracticas> {
                   ItemCard(
                       title: "Eutanasia en Equinos",
                       extra: "Guías prácticas · Por AMMVEE AC\nseptiembre 26, 2024",
+                      pathImg: "bluelogo.png",
+                      circle: true,
                       press: (){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return viewAPDF(Name: "EUTANASIA-EN-EQUINOS-1", pageContext: widget.pageContext, bool: true,);
+                              return viewAPDF(Name: "EUTANASIA-EN-EQUINOS-1", pageContext: widget.pageContext);
                             },
                           ),
                         );
@@ -78,12 +80,14 @@ class _guiasPracticasState extends State<guiasPracticas> {
                   ItemCard(
                       title: "Anemia Infecciosa Equina",
                       extra: "Guías prácticas · Por AMMVEE AC\nseptiembre 24, 2024",
+                      pathImg: "bluelogo.png",
+                      circle: true,
                       press: (){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return viewAPDF(Name: "manual-aie-v1", pageContext: widget.pageContext, bool: true,);
+                              return viewAPDF(Name: "manual-aie-v1", pageContext: widget.pageContext);
                             },
                           ),
                         );
