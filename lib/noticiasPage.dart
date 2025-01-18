@@ -1,3 +1,5 @@
+import 'package:ammvee_release/addOns/itemCardsNoticias.dart';
+import 'package:ammvee_release/addOns/themeColors.dart';
 import 'package:flutter/material.dart';
 
 import 'addOns/itemCards.dart';
@@ -50,15 +52,29 @@ class _noticiasPageState extends State<noticiasPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
+                Stack(
+                  children: [
+                    Container(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.asset(
+                            'assets/PurpleBackGroundEdit.png', fit: BoxFit.cover)
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.025),
+                        child: const Text("Últimas noticias:",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: kWhite,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                const Text("Últimas noticias:",
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                ItemCard(
+                ItemCardNoticia(
                     title: "Noticia Ketamina",
                     extra: "Categorías: Avisos, Blog y Notas Por AMMVEE AC. noviembre 4, 2024",
                     pathImg: "noticiak.jpg",
@@ -73,7 +89,7 @@ class _noticiasPageState extends State<noticiasPage> {
                         ),
                       );
                     }),
-                ItemCard(
+                ItemCardNoticia(
                     title: "Feliz año nuevo, les desea AMMVEE",
                     extra: "Categorías: Avisos, Blog y Notas Por AMMVEE AC. diciembre 31, 2024",
                     pathImg: "noticiamain.jpg",

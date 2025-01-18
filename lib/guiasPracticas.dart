@@ -54,13 +54,28 @@ class _guiasPracticasState extends State<guiasPracticas> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.02,
-                  ),
-                  const Text("Selección de Guía:",
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
+
+                  Stack(
+                    children: [
+                      Container(
+                          height: MediaQuery.of(context).size.height * 0.1,
+                          width: MediaQuery.of(context).size.width,
+                          child: Image.asset(
+                              'assets/PurpleBackGroundEdit.png', fit: BoxFit.cover)
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.025),
+                          child: const Text("Selección de Guía:",
+                            style: TextStyle(
+                              fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: kWhite,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   ItemCard(
                       title: "Eutanasia en Equinos",

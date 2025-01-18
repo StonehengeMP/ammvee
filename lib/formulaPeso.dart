@@ -42,7 +42,17 @@ class _formulaPesoState extends State<formulaPeso> {
         ),
       ),
       body: Container(
+        child: Column(
+          children: [
+            Image.asset(""),
+            Row(
+              children: [
 
+              ],
+            ),
+            Text(""),
+          ],
+        ),
       ),
     );
   }

@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 
 class enterAsGuest extends StatelessWidget {
   final VoidCallback press;
+  final String buttonName;
+  final String title;
+
   const enterAsGuest({
     Key? key,
-    required this.press
+    required this.press,
+    required this.buttonName,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -13,8 +18,8 @@ class enterAsGuest extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const Text(
-          "Inicia sesión",
+         Text(
+          title,
           style: TextStyle(
               color: Colors.black,
               fontFamily: "Poppins"
@@ -22,8 +27,8 @@ class enterAsGuest extends StatelessWidget {
         ),
         GestureDetector(
           onTap: press,
-          child: const Text(
-           " sin cuenta",
+          child:  Text(
+           buttonName,
             style: TextStyle(
                 color: kBlue,
                 fontFamily: "Poppins",

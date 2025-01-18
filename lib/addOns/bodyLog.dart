@@ -107,6 +107,8 @@ class _BodyState extends State<Body> {
                 height: size.height * 0.03,
               ),
               enterAsGuest(
+                buttonName: " sin cuenta",
+                title: "Inicia sesión",
                 press: () {
                   Navigator.push(
                     context,
