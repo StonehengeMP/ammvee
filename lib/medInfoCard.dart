@@ -1,5 +1,7 @@
+import 'package:ammvee_release/addOns/enterAsGuest.dart';
 import 'package:ammvee_release/addOns/isLoading.dart';
 import 'package:ammvee_release/addOns/themeColors.dart';
+import 'package:ammvee_release/addOns/viewAPDF.dart';
 import 'initialMenu.dart';
 import 'package:flutter/material.dart';
 
@@ -216,7 +218,24 @@ class _medInfoCardState extends State<medInfoCard> {
                     ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.07,
-                        )
+                        ),
+                        enterAsGuest(
+                            press: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return viewAPDF(Name: "cartaReferencias", pageContext: false);
+                                  },
+                                ),
+                              );
+                            },
+                            buttonName: " aquí",
+                            title: "Puedes encontrar la referencia"
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.07,
+                        ),
                   ])))),
         );
 }
