@@ -4,6 +4,7 @@ import 'package:ammvee_release/guiasPracticas.dart';
 import 'package:ammvee_release/initialMenu.dart';
 import 'package:ammvee_release/logIn.dart';
 import 'package:ammvee_release/noticiasPage.dart';
+import 'package:ammvee_release/recursosVisuales.dart';
 import 'package:ammvee_release/responsivasMedicas.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -183,7 +184,7 @@ class _mainScreenBMState extends State<mainScreenBM> {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return noticiasPage(pageContext: widget.pageContext);
+                            return recursosVisuales(pageContext: widget.pageContext);
                           },
                         ),
                       );

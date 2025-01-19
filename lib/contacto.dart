@@ -71,7 +71,7 @@ class _ContactoState extends State<Contacto> {
                     Padding(
                         padding: EdgeInsets.only(
                           left: MediaQuery.of(context).size.width * 0.06,
-                          top: MediaQuery.of(context).size.height * 0.01,
+                          top: MediaQuery.of(context).size.height * 0.02,
                           right: MediaQuery.of(context).size.width * 0.06,
                         ),
                         child: const Align(
@@ -169,11 +169,11 @@ class _ContactoState extends State<Contacto> {
                               return AlertDialog(
                                 title: const Text('Borrado de cuenta'),
                                 content: const Text(
-                                    '''Si seleccionas borrar se borrara la cuenta del servidor.
+                                    '''Si seleccionas borrar, se borrara la cuenta del servidor.
 
-No habra forma de recuperar la cuenta una vez alla sido borrada.
+No habra forma de recuperar la cuenta una vez haya sido borrada.
 
-Si aun asi deseas borrar la cuenta favor de seleccionar la opción correspondiente.'''),
+Si aún así deseas borrar la cuenta favor de seleccionar la opción correspondiente.'''),
                                 actions: [
                                   TextButton(
                                     child: const Text('Cancelar'),

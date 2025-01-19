@@ -27,14 +27,7 @@ class _guiasPracticasState extends State<guiasPracticas> {
             icon: const Icon(Icons.arrow_back),
             color: Colors.black,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return mainScreenBM(pageContext: widget.pageContext);
-                  },
-                ),
-              );
+              Navigator.pop(context);
             },
           ),
           centerTitle: true,
